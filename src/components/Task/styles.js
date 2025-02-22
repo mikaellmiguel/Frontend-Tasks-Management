@@ -6,7 +6,7 @@ export const Container = styled.div`
     gap: 0.5rem;
     background-color:${({ status }) => {
         switch (status) {
-            case "concluida":
+            case "concluída":
                 return "#00A88B";
             case "realizando":
                 return "#7678D1";
