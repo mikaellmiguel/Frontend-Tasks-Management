@@ -4,9 +4,11 @@ import { Input } from "../../components/Input";
 import { Board } from "../../components/Board";
 import {api} from "../../services/api";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Homepage() {
 
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -25,13 +27,17 @@ export function Homepage() {
     getTasks(search);
   }, [search]);
 
+  function handleClickNewTask() {
+    navigate("/new");
+  }
+
   return (
     <Container>
       <Header>
         <h1>Kanban</h1>
         <Options>
           <Input placeholder="Buscar..." value={search} onChange = {(e) => setSearch(e.target.value)} />
-          <Button text="Nova Tarefa" />
+          <Button text="Nova Tarefa" onClick = {() => handleClickNewTask()}/>
         </Options>
       </Header>
       <BoardContainer>
