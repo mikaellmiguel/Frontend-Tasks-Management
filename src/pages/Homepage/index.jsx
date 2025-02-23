@@ -8,22 +8,29 @@ import { useEffect, useState } from "react";
 export function Homepage() {
 
   const [tasks, setTasks] = useState([]);
+  const [search, setSearch] = useState("");
 
-  async function getTasks() {
+  async function getTasks(searchTerm) {
     const response = await api.get("/tarefas");
-    setTasks(response.data);
+
+    if(searchTerm == "") {
+      setTasks(response.data);
+    }
+    else {
+      setTasks(response.data.filter(task => task.title.toLowerCase().includes(searchTerm.toLowerCase())));
+    }
   }
 
   useEffect(() => {
-    getTasks();
-  }, []);
+    getTasks(search);
+  }, [search]);
 
   return (
     <Container>
       <Header>
         <h1>Kanban</h1>
         <Options>
-          <Input placeholder="Buscar..." />
+          <Input placeholder="Buscar..." value={search} onChange = {(e) => setSearch(e.target.value)} />
           <Button text="Nova Tarefa" />
         </Options>
       </Header>
