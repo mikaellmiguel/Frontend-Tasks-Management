@@ -7,7 +7,7 @@ export function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Homepage />} />
-                <Route path="/edit" element={<TaskView />} />
+                <Route path="/edit/:id" element={<TaskView />} />
             </Routes>
         </BrowserRouter>
     )
