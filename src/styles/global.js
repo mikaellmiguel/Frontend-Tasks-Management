@@ -10,6 +10,11 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
+    body {
+        background: #191919;
+        overflow: hidden;
+    }
+
     textarea, select {
         background: transparent;
         border: 2px solid #BBBBBB;
