@@ -7,4 +7,13 @@ export const Container = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 0.5rem;
+  transition: all 0.3s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    transform: scale(0.8);
+  }
 `;
