@@ -1,7 +1,7 @@
 import { Button } from "../../components/Button";
 import { Container, Header, Options, TaskContent} from "./styles";
 import { Input } from "../../components/Input";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
@@ -9,6 +9,7 @@ export function TaskView() {
     
 
     const id = useParams().id;
+    const navigate = useNavigate();
 
     const [task, setTask] = useState({});
 
@@ -37,6 +38,7 @@ export function TaskView() {
 
     async function deleteTask() {
         await api.delete(`/tarefas/${id}`);
+        navigate("/");
     }
 
     return (
@@ -57,7 +59,7 @@ export function TaskView() {
                         <option value="concluída">Concluída</option>
                     </select>
 
-                    <Button text="Deletar Tarefa" backgroundColor="#EC221F"></Button>
+                    <Button text="Deletar Tarefa" backgroundColor="#EC221F" onClick={() => deleteTask()}></Button>
                     <Button text="Salvar Informações"></Button>
                 </Options>
             </Header>
