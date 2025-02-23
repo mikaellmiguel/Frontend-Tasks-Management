@@ -11,21 +11,18 @@ export function TaskView() {
     const id = useParams().id;
     const navigate = useNavigate();
 
-    const [task, setTask] = useState({});
-
     const [priority, setPriority] = useState("alta");
     const [status, setStatus] = useState("pendente");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [date, setDate] = useState("");
 
-    
+    // Recuperação das informações da tarefa
     useEffect(() => {
         async function fetchTask() {
             const response = await api.get(`/tarefas/${id}`);
             const task = response.data;
             
-            setTask(task);
             setPriority(task.priority);
             setStatus(task.status);
             setTitle(task.title);
@@ -41,8 +38,25 @@ export function TaskView() {
         navigate("/");
     }
 
+    async function saveTask() {
+
+        console.log(title)
+
+        await api.put(`/tarefas/${id}`, {
+            titulo: title,
+            descricao: description,
+            prioridade: priority,
+            status,
+            data_vencimento: date
+        });
+
+        alert("Tarefa atualizada com sucesso!");
+        navigate("/");
+    }
+
     return (
         <Container>
+            
             <Header>
                 <h1>{title}</h1>
                 <Options>
@@ -60,9 +74,10 @@ export function TaskView() {
                     </select>
 
                     <Button text="Deletar Tarefa" backgroundColor="#EC221F" onClick={() => deleteTask()}></Button>
-                    <Button text="Salvar Informações"></Button>
+                    <Button text="Salvar Informações" onClick = {() => saveTask()}></Button>
                 </Options>
             </Header>
+            
             <TaskContent>
                 <Input placeholder="Título da Tarefa" value={title} onChange={(e) => setTitle(e.target.value)}/>
                 <textarea placeholder="Insira a descrição da tarefa" rows={6} value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
