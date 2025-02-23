@@ -7,6 +7,6 @@ import { TaskView } from './pages/TaskView'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GlobalStyles/>
-    <TaskView />
+    <Homepage />
   </StrictMode>,
 )
