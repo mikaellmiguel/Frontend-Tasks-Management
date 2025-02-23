@@ -9,4 +9,25 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
+
+    textarea, select {
+        background: transparent;
+        border: 2px solid #BBBBBB;
+        color: #FFFFFF;
+        border-radius: 8px;
+        padding: 0.5rem;
+
+        &::placeholder {
+            color: #BBBBBB;
+        }
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    select > option {
+        color: #000000;
+        background-color: #FFFFFF;
+    }
 `;

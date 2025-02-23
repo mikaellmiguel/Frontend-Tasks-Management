@@ -19,6 +19,11 @@ export function Homepage() {
       <Button text="Editar Informações" backgroundColor="#333333" />
       <Input type="date"/>
       <Board title="Pendente" tasks={tasks}></Board>
+      <select id="prioridades">
+        <option value="alta">Alta</option>
+        <option value="media">Média</option>
+        <option value="baixa">Baixa</option>
+      </select>
     </Container>
   );
 }
