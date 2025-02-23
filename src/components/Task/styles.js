@@ -14,7 +14,7 @@ export const Container = styled.div`
                 return "#EC221F";
         }
     }};
-    width: 16rem;
+    width: 100%;
     padding: 1rem;
     color: #FFFFFF;
     border-radius: 0.75rem;
